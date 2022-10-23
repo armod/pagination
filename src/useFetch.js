@@ -9,11 +9,16 @@ export const useFetch = () => {
   const getProducts = async () => {
     const response = await fetch(url)
     const data = await response.json()
-    setData(data)
+
+    // paginate(data)
+    setData(paginate(data))
     setLoading(false)
   }
 
   useEffect(() => {
+    /* setTimeout(() => {
+      console.log('Deleyed for 1sec')
+    }, 2000) */
     getProducts()
   }, [])
   return { loading, data }
